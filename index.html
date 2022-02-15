@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form-validator</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+  </head>
+  <body>
+    <div class="total-container">
+      <div class="smile">
+        <img class="smile-img" id="smile-img" src="img/smile.png" alt="smile" />
+        <div class="eye-container" id="eye-container">
+          <div class="eye-left" id="eye-left"></div>
+          <div class="eye-right" id="eye-right"></div>
+        </div>
+        <div class="mouth" id="mouth"></div>
+        <div class="open-mouth" id="open-mouth"></div>
+      </div>
+      <!-- finger that says OK -->
+      <div class="sent-ok" id="sent-ok">
+        <img src="img/ok.png" alt="ok" />
+      </div>
+      <!-- finger that says NO -->
+      <div class="sent-no" id="sent-no">
+        <img src="img/no.png" alt="no" />
+      </div>
+
+      <form id="form" class="form-container">
+        <h2 class="title">Register</h2>
+
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter Username" />
+        <small class="error-username" id="error-username">
+          Username must be at least 3 characters long
+        </small>
+
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="Enter Email" />
+        <small class="error-email" id="error-email">
+          Invalid email. Valid email example: pippo@baudo.com
+        </small>
+
+        <label for="password">Password</label>
+        <div class="password-container">
+          <input
+            type="password"
+            class="password"
+            id="password"
+            placeholder="Enter password"
+          />
+          <button
+            type="button"
+            class="toggle-password-btn"
+            id="toggle-password-btn"
+            onclick="togglePassword('password','toggle-password-img')"
+          >
+            <img
+              class="toggle-password-img"
+              id="toggle-password-img"
+              src="img/show.png"
+              alt="toggle_password_visibility"
+            />
+          </button>
+        </div>
+        <small class="error-password" id="error-password">
+          Minimum six characters, at least: one uppercase letter, one lowercase
+          letter, one number and one special character.
+        </small>
+
+        <label for="confirm-password">Confirm password</label>
+        <div class="confirm-password-container">
+          <input
+            type="password"
+            class="confirm-password"
+            id="confirm-password"
+            placeholder="Confirm Password"
+          />
+          <button
+            type="button"
+            class="toggle-confirm-password-btn"
+            id="toggle-confirm-password-btn"
+            onclick="togglePassword('confirm-password', 'toggle-confirm-password-img')"
+          >
+            <img
+              class="toggle-confirm-password-img"
+              id="toggle-confirm-password-img"
+              src="img/show.png"
+              alt="toggle_password_visibility"
+            />
+          </button>
+        </div>
+        <small class="error-confirm-password" id="error-confirm-password">
+          Passwords are different.
+        </small>
+
+        <button type="submit" class="btn" id="submit">SUBMIT</button>
+      </form>
+    </div>
+
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
