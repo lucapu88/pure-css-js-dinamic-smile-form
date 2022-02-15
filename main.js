@@ -176,21 +176,16 @@ function togglePassword(inputID, imgID) {
 function submitForm(event) {
   event.preventDefault();
   if (
-    (checkIfIsEmpty(usernameInput),
-    checkIfIsEmpty(emailInput),
-    checkIfIsEmpty(passwordInput),
-    checkIfIsEmpty(confirmPasswordInput))
+    checkIfIsEmpty(usernameInput) &&
+    checkIfIsEmpty(emailInput) &&
+    checkIfIsEmpty(passwordInput) &&
+    checkIfIsEmpty(confirmPasswordInput)
   ) {
-    verifyUsername(username);
-    verifyEmail(emailInput);
-    verifyPassword(passwordInput);
-    comparePassword(confirmPasswordInput);
-
     if (
-      (verifyUsername(username),
-      verifyEmail(emailInput),
-      verifyPassword(passwordInput),
-      comparePassword(confirmPasswordInput))
+      verifyUsername(username) &&
+      verifyEmail(emailInput) &&
+      verifyPassword(passwordInput) &&
+      comparePassword(confirmPasswordInput)
     ) {
       form.reset();
       formCompleted('ok');
