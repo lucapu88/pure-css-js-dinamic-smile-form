@@ -35,25 +35,29 @@
       <form id="form" class="form-container">
         <h2 class="title">Register</h2>
 
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter Username" />
+        <label for="username">Username*</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter Username (*required)"
+        />
         <small class="error-username" id="error-username">
           Username must be at least 3 characters long
         </small>
 
-        <label for="email">Email</label>
-        <input type="text" id="email" placeholder="Enter Email" />
+        <label for="email">Email*</label>
+        <input type="text" id="email" placeholder="Enter Email (*required)" />
         <small class="error-email" id="error-email">
           Invalid email. Valid email example: pippo@baudo.com
         </small>
 
-        <label for="password">Password</label>
+        <label for="password">Password*</label>
         <div class="password-container">
           <input
             type="password"
             class="password"
             id="password"
-            placeholder="Enter password"
+            placeholder="Enter password (*required)"
           />
           <button
             type="button"
@@ -74,13 +78,13 @@
           letter, one number and one special character.
         </small>
 
-        <label for="confirm-password">Confirm password</label>
+        <label for="confirm-password">Confirm password*</label>
         <div class="confirm-password-container">
           <input
             type="password"
             class="confirm-password"
             id="confirm-password"
-            placeholder="Confirm Password"
+            placeholder="Confirm Password (*required)"
           />
           <button
             type="button"
