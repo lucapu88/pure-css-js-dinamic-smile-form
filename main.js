@@ -1,4 +1,4 @@
-const eyeContainer = document.getElementById('eye-container');
+const eyesContainer = document.getElementById('eyes-container');
 const smileImg = document.getElementById('smile-img');
 const eyeLeft = document.getElementById('eye-left');
 const eyeRight = document.getElementById('eye-right');
@@ -8,6 +8,8 @@ const passwordInput = document.getElementById('password');
 const confirmPasswordInput = document.getElementById('confirm-password');
 const form = document.getElementById('form');
 const usernameInput = document.getElementById('username');
+const fingerSaysOk = document.getElementById('sent-ok');
+const fingerSaysNo = document.getElementById('sent-no');
 
 //MOVE EYES WHEN TYPE USERNAME
 const username = document.querySelector('#username');
@@ -51,7 +53,8 @@ function moveEyes(event) {
   let eventLength = event.target.value.length * 2;
 
   openEyes();
-  eyeContainer.style.marginRight =
+  eyesContainer.style.marginTop = '62px';
+  eyesContainer.style.marginRight =
     +eventLength <= 45 && `${20 - +eventLength}px`;
 }
 
@@ -65,7 +68,7 @@ function moveMouth(event) {
 }
 
 function closeEyes() {
-  eyeContainer.style.marginRight = '0px';
+  eyesContainer.style.marginRight = '0px';
   eyeLeft.classList.add('close-eyes');
   eyeRight.classList.add('close-eyes');
   smileImg.style.backgroundColor = '#FDD03C';
@@ -78,8 +81,53 @@ function openEyes() {
 }
 
 function resetMouth() {
-  mouth.style.width = '60px';
-  mouth.style.borderRadius = '10px';
+  return (mouth.style.width = '60px'), (mouth.style.borderRadius = '10px');
+}
+
+function resetEyes() {
+  return (
+    (eyesContainer.style.marginTop = '55px'),
+    (eyesContainer.style.marginRight = '-2px')
+  );
+}
+
+function toggleMouth(condition) {
+  const openMouth = document.getElementById('open-mouth');
+
+  if (condition === 'close') {
+    return (openMouth.style.display = 'none'), (mouth.style.display = 'block');
+  }
+  if (condition === 'open') {
+    return (openMouth.style.display = 'block'), (mouth.style.display = 'none');
+  }
+}
+
+function smileSaysOkOrNo(condition) {
+  if (condition === 'ok') {
+    fingerSaysNo.style.display = 'none';
+    fingerSaysOk.style.display = 'block';
+    setTimeout(() => {
+      fingerSaysOk.style.display = 'none';
+    }, 5000);
+  }
+
+  if (condition === 'no') {
+    fingerSaysOk.style.display = 'none';
+    fingerSaysNo.style.display = 'block';
+  }
+}
+
+function refreshPage() {
+  const smile = document.getElementById('smile');
+
+  resetEyes();
+  openEyes();
+  toggleMouth('open');
+  smile.style.WebkitTransitionDuration = '1s';
+  smile.style.webkitTransform = 'rotate(360deg)'; //TODO: fix me!
+  setTimeout(() => {
+    location.reload();
+  }, 1000);
 }
 
 /*
@@ -196,29 +244,20 @@ function submitForm(event) {
 }
 
 function formCompleted(condition) {
-  const itsOk = document.getElementById('sent-ok');
-  const itsWrong = document.getElementById('sent-no');
-  const openMouth = document.getElementById('open-mouth');
-
   openEyes();
 
   if (condition === 'ok') {
+    // eyes return to initial position
+    resetEyes();
     // close mouth
-    openMouth.style.display = 'none';
-    mouth.style.display = 'block';
+    toggleMouth('close');
     // finger says ok for 4 seconds
-    itsWrong.style.display = 'none';
-    itsOk.style.display = 'block';
-    setTimeout(() => {
-      itsOk.style.display = 'none';
-    }, 5000);
+    smileSaysOkOrNo('ok');
   }
   if (condition === 'no') {
     // finger says no
-    itsOk.style.display = 'none';
-    mouth.style.display = 'none';
+    smileSaysOkOrNo('no');
     // open mouth
-    openMouth.style.display = 'block';
-    itsWrong.style.display = 'block';
+    toggleMouth('open');
   }
 }

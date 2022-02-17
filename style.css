@@ -37,6 +37,7 @@ body {
   background-color: white;
   width: 180px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .smile-img {
@@ -55,9 +56,9 @@ body {
   border-radius: 100%;
 }
 
-.eye-container {
-  margin-top: 62px;
-  margin-right: 20px;
+.eyes-container {
+  margin-top: 55px;
+  margin-right: -2px;
   display: flex;
   width: 90px;
   justify-content: space-around;
