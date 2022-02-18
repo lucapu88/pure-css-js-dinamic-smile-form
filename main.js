@@ -81,24 +81,25 @@ function openEyes() {
 }
 
 function resetMouth() {
-  return (mouth.style.width = '60px'), (mouth.style.borderRadius = '10px');
+  mouth.style.width = '60px';
+  mouth.style.borderRadius = '10px';
 }
 
 function resetEyes() {
-  return (
-    (eyesContainer.style.marginTop = '55px'),
-    (eyesContainer.style.marginRight = '-2px')
-  );
+  eyesContainer.style.marginTop = '55px';
+  eyesContainer.style.marginRight = '-2px';
 }
 
 function toggleMouth(condition) {
   const openMouth = document.getElementById('open-mouth');
 
   if (condition === 'close') {
-    return (openMouth.style.display = 'none'), (mouth.style.display = 'block');
+    openMouth.style.display = 'none';
+    mouth.style.display = 'block';
   }
   if (condition === 'open') {
-    return (openMouth.style.display = 'block'), (mouth.style.display = 'none');
+    openMouth.style.display = 'block';
+    mouth.style.display = 'none';
   }
 }
 
